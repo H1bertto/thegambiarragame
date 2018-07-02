@@ -42,27 +42,109 @@ class Player(Character):
         self.coin = 0
         self.bag = {}
         if self.race == "Politico":
+            self.hpmax = 170
+            self.hp = self.hpmax
+            self.spmax = 160
+            self.sp = self.spmax
+        elif self.race == "Viking":
             self.hpmax = 200
+            self.hp = self.hpmax
+            self.spmax = 130
+            self.sp = self.spmax
+        elif self.race == "Jedi":
+            self.hpmax = 180
+            self.hp = self.hpmax
+            self.spmax = 180
+            self.sp = self.spmax
+        elif self.race == "Palhaço":
+            self.hpmax = 150
             self.hp = self.hpmax
             self.spmax = 200
             self.sp = self.spmax
-            self.dano = 0
-            self.atk = 0
-            self.matk = 0
-            self.defe = 0
-            self.mdefe = 0
-            self.pfor = 0
-            self.pcon = 0
-            self.pint = 0
-            self.pdex = 0
-            self.crit = 0
-            self.esq = 0
-        elif self.race == "Viking":
-        elif self.race == "Jedi":
-        elif self.race == "Palhaço":
         elif self.race == "Dark Safari":
+            self.hpmax = 160
+            self.hp = self.hpmax
+            self.spmax = 190
+            self.sp = self.spmax
         elif self.race == "Constantine":
+            self.hpmax = 170
+            self.hp = self.hpmax
+            self.spmax = 190
+            self.sp = self.spmax
         elif self.race == "Avenger":
+            self.hpmax = 180
+            self.hp = self.hpmax
+            self.spmax = 180
+            self.sp = self.spmax
+
+    def choosewapon(self):
+        a = ''
+        while a == '':
+            print("Escolha a Arma Inicial:")
+            if self.race == "Politico":
+                print("(1)Adaga de Ferro, (2)Punhal Dente de Urso, (3)Estilingue de Madeira")
+                a = input("> ")
+                self.atk = 0
+                self.matk = 0
+                self.defe = 0
+                self.mdefe = 0
+
+                self.dano = 0
+            elif self.race == "Viking":
+                print("(1)Machado De Ferro, (2)Marreta de Pedra, (3)Maça de Ferro")
+                a = input("> ")
+                self.atk = 0
+                self.matk = 0
+                self.defe = 0
+                self.mdefe = 0
+
+                self.dano = 0
+            elif self.race == "Jedi":
+                print("(1)Sabre Verde, (2)Sabre Azul, (3)Sabre Amarelo")
+                a = input("> ")
+                self.atk = 0
+                self.matk = 0
+                self.defe = 0
+                self.mdefe = 0
+
+                self.dano = 0
+            elif self.race == "Palhaço":
+                print("(1)Varinha de Madeira, (2)Luvas Brancas, (3)Balão Magico")
+                a = input("> ")
+                self.atk = 0
+                self.matk = 0
+                self.defe = 0
+                self.mdefe = 0
+
+                self.dano = 0
+            elif self.race == "Dark Safari":
+                print("(1)Chicote de couro, (2)Cajado de Madeira, (3)Laço de Couro")
+                a = input("> ")
+                self.atk = 0
+                self.matk = 0
+                self.defe = 0
+                self.mdefe = 0
+
+                self.dano = 0
+            elif self.race == "Constantine":
+                self.atk = 0
+                self.matk = 0
+                self.defe = 0
+                self.mdefe = 0
+
+                self.dano = 0
+            elif self.race == "Avenger":
+                self.atk = 0
+                self.matk = 0
+                self.defe = 0
+                self.mdefe = 0
+
+                self.dano = 0
+            try:
+                a = int(a)
+            except ValueError:
+                print("Ainda não temos essa Arma")
+                a = ''
 
 
 
