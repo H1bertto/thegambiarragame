@@ -16,6 +16,7 @@ class Character:
         self.sp = 0
         self.spmax = 0
         self.dano = 0
+        self.mdano = 0
         self.atk = 0
         self.matk = 0
         self.defe = 0
@@ -27,8 +28,8 @@ class Character:
         self.crit = 0
         self.esq = 0
 
-    def armas(self):
-        a = 2
+    def dodamage(self, a):
+        self.dano = randint(a-int(a/3), a+a)
 
 
 class Player(Character):
@@ -77,83 +78,240 @@ class Player(Character):
             self.spmax = 180
             self.sp = self.spmax
 
-    def choosewapon(self):
+    def politico(self):
         a = ''
         while a == '':
-            print("Escolha a Arma Inicial:")
-            if self.race == "Politico":
-                print("(1)Adaga de Ferro, (2)Punhal Dente de Urso, (3)Estilingue de Madeira")
-                a = input("> ")
-                self.atk = 0
-                self.matk = 0
-                self.defe = 0
-                self.mdefe = 0
-
-                self.dano = 0
-            elif self.race == "Viking":
-                print("(1)Machado De Ferro, (2)Marreta de Pedra, (3)Maça de Ferro")
-                a = input("> ")
-                self.atk = 0
-                self.matk = 0
-                self.defe = 0
-                self.mdefe = 0
-
-                self.dano = 0
-            elif self.race == "Jedi":
-                print("(1)Sabre Verde, (2)Sabre Azul, (3)Sabre Amarelo")
-                a = input("> ")
-                self.atk = 0
-                self.matk = 0
-                self.defe = 0
-                self.mdefe = 0
-
-                self.dano = 0
-            elif self.race == "Palhaço":
-                print("(1)Varinha de Madeira, (2)Luvas Brancas, (3)Balão Magico")
-                a = input("> ")
-                self.atk = 0
-                self.matk = 0
-                self.defe = 0
-                self.mdefe = 0
-
-                self.dano = 0
-            elif self.race == "Dark Safari":
-                print("(1)Chicote de couro, (2)Cajado de Madeira, (3)Laço de Couro")
-                a = input("> ")
-                self.atk = 0
-                self.matk = 0
-                self.defe = 0
-                self.mdefe = 0
-
-                self.dano = 0
-            elif self.race == "Constantine":
-                self.atk = 0
-                self.matk = 0
-                self.defe = 0
-                self.mdefe = 0
-
-                self.dano = 0
-            elif self.race == "Avenger":
-                self.atk = 0
-                self.matk = 0
-                self.defe = 0
-                self.mdefe = 0
-
-                self.dano = 0
+            print("(1)Adaga de Ferro, (2)Punhal Dente de Urso, (3)Estilingue de Madeira")
+            a = str(input("> "))
             try:
                 a = int(a)
             except ValueError:
                 print("Ainda não temos essa Arma")
                 a = ''
+            if a == 1:
+                self.atk = 10
+                self.matk = 0
+                self.defe = 1
+                self.mdefe = 1
+                return True
+            elif a == 2:
+                self.atk = 8
+                self.matk = 0
+                self.defe = 2
+                self.mdefe = 2
+                return True
+            elif a == 3:
+                self.atk = 11
+                self.matk = 0
+                self.defe = 1
+                self.mdefe = 0
+                return True
+            else:
+                print("Ainda não temos essa Arma")
+                a = ''
 
+    def viking(self):
+        a = ''
+        while a == '':
+            print("(1)Machado De Ferro, (2)Marreta de Pedra, (3)Maça de Ferro")
+            a = str(input("> "))
+            try:
+                a = int(a)
+            except ValueError:
+                print("Ainda não temos essa Arma")
+                a = ''
+            if a == 1:
+                self.atk = 10
+                self.matk = 0
+                self.defe = 1
+                self.mdefe = 1
+                return True
+            elif a == 2:
+                self.atk = 8
+                self.matk = 0
+                self.defe = 2
+                self.mdefe = 2
+                return True
+            elif a == 3:
+                self.atk = 11
+                self.matk = 0
+                self.defe = 1
+                self.mdefe = 0
+                return True
+            else:
+                print("Ainda não temos essa Arma")
+                a = ''
+
+    def jedi(self):
+        a = ''
+        while a == '':
+            print("(1)Sabre Verde, (2)Sabre Azul, (3)Sabre Amarelo")
+            a = str(input("> "))
+            try:
+                a = int(a)
+            except ValueError:
+                print("Ainda não temos essa Arma")
+                a = ''
+            if a == 1:
+                self.atk = 10
+                self.matk = 0
+                self.defe = 1
+                self.mdefe = 1
+                return True
+            elif a == 2:
+                self.atk = 8
+                self.matk = 0
+                self.defe = 2
+                self.mdefe = 2
+                return True
+            elif a == 3:
+                self.atk = 11
+                self.matk = 0
+                self.defe = 1
+                self.mdefe = 0
+                return True
+            else:
+                print("Ainda não temos essa Arma")
+                a = ''
+
+    def monge(self):
+        a = ''
+        while a == '':
+            print("(1)Orbes, (2)Cajado de Ferro, (3)Punhos")
+            a = str(input("> "))
+            try:
+                a = int(a)
+            except ValueError:
+                print("Ainda não temos essa Arma")
+                a = ''
+            if a == 1:
+                self.atk = 10
+                self.matk = 0
+                self.defe = 1
+                self.mdefe = 1
+                return True
+            elif a == 2:
+                self.atk = 8
+                self.matk = 0
+                self.defe = 2
+                self.mdefe = 2
+                return True
+            elif a == 3:
+                self.atk = 11
+                self.matk = 0
+                self.defe = 1
+                self.mdefe = 0
+                return True
+            else:
+                print("Ainda não temos essa Arma")
+                a = ''
+
+    def xaman(self):
+        a = ''
+        while a == '':
+            print("(1)Espirito de Urso, (2)Espirito de Rapoza, (3)Espirito de Águia")
+            a = str(input("> "))
+            try:
+                a = int(a)
+            except ValueError:
+                print("Ainda não temos essa Arma")
+                a = ''
+            if a == 1:
+                self.atk = 10
+                self.matk = 0
+                self.defe = 1
+                self.mdefe = 1
+                return True
+            elif a == 2:
+                self.atk = 8
+                self.matk = 0
+                self.defe = 2
+                self.mdefe = 2
+                return True
+            elif a == 3:
+                self.atk = 11
+                self.matk = 0
+                self.defe = 1
+                self.mdefe = 0
+                return True
+            else:
+                print("Ainda não temos essa Arma")
+                a = ''
+
+    def constantine(self):
+        a = ''
+        while a == '':
+            print("(1)Varinha de Ossos, (2)Cajado de Madeira, (3)Orbe")
+            a = str(input("> "))
+            try:
+                a = int(a)
+            except ValueError:
+                print("Ainda não temos essa Arma")
+                a = ''
+            if a == 1:
+                self.atk = 10
+                self.matk = 0
+                self.defe = 1
+                self.mdefe = 1
+                return True
+            elif a == 2:
+                self.atk = 8
+                self.matk = 0
+                self.defe = 2
+                self.mdefe = 2
+                return True
+            elif a == 3:
+                self.atk = 11
+                self.matk = 0
+                self.defe = 1
+                self.mdefe = 0
+                return True
+            else:
+                print("Ainda não temos essa Arma")
+                a = ''
+
+    def avenger(self):
+        a = ''
+        while a == '':
+            print("(1)Punhos de choque, (2)Arco e flecha, (3)Pistola")
+            a = str(input("> "))
+            try:
+                a = int(a)
+            except ValueError:
+                print("Ainda não temos essa Arma")
+                a = ''
+            if a == 1:
+                self.atk = 10
+                self.matk = 0
+                self.defe = 1
+                self.mdefe = 1
+                return True
+            elif a == 2:
+                self.atk = 8
+                self.matk = 0
+                self.defe = 2
+                self.mdefe = 2
+                return True
+            elif a == 3:
+                self.atk = 11
+                self.matk = 0
+                self.defe = 1
+                self.mdefe = 0
+                return True
+            else:
+                print("Ainda não temos essa Arma")
+                a = ''
 
 
 class Game:
     def __init__(self):
-        print("Oi")
+        print("The Gambiarra")
         self.p = None
+        self.continua = True
+        self.senha = ''
         self.app = FirebaseApplication('https://thegambiarragame.firebaseio.com', authentication=None)
         self.authentication = FirebaseAuthentication('', '@gmail.com', extra={'id': 123})
+        self.app.authentication = self.authentication
 
     def carregarpersonagem(self, char):
         self.p.nv = self.app.get('/Personagens' + char, "Nv")
@@ -179,29 +337,120 @@ class Game:
         self.p.skill4 = self.app.get('/Personagens' + char, "Skill4")
         self.p.supreme = self.app.get('/Personagens' + char, "Supreme")
         self.p.coin = self.app.get('/Personagens' + char + '/Bag', "Coins")
-        self.p.bag = self.app.get('/Personagens' + char + '/Bag', "Iten")
+        self.p.bag = self.app.get('/Personagens' + char + '/Bag', "Item")
+
+    def chooserace(self):
+        escolhido = False
+        while escolhido is False:
+            print("(1) Politico - ")
+            print("(2) Viking - ")
+            print("(3) Jedi - ")
+            print("(4) Monge - ")
+            print("(5) Xaman - ")
+            print("(6) Constantine - ")
+            print("(7) Avenger - ")
+            a = str(input("Classe: "))
+            try:
+                a = int(a)
+            except ValueError:
+                pass
+            if a == 1:
+                self.p.race = "Politico"
+                escolhido = self.p.politico()
+            elif a == 2:
+                self.p.race = "Viking"
+                escolhido = self.p.viking()
+            elif a == 3:
+                self.p.race = "Jedi"
+                escolhido = self.p.jedi()
+            elif a == 4:
+                self.p.race = "Monge"
+                escolhido = self.p.monge()
+            elif a == 5:
+                self.p.race = "Xaman"
+                escolhido = self.p.xaman()
+            elif a == 6:
+                self.p.race = "Constantine"
+                escolhido = self.p.constantine()
+            elif a == 7:
+                self.p.race = "Avenger"
+                escolhido = self.p.avenger()
+            else:
+                print("Não possue essa classe")
+                escolhido = False
 
     def play(self):
-        correto = False
-        self.p = Player()
-        while correto is False:
-            self.p.name = str(input("User: "))
-            result = self.app.get('/Personagens', self.p.name)
-            if result is not None:
-                print("Personagem existente")
-                b = str(input("Senha: "))
-                paz = self.app.get('/Personagens/' + self.p.name, "Pass")
-                if paz == b:
-                    self.carregarpersonagem(self.p.name)
-                    print("Carregado")
-                    correto = True
+        while self.continua:
+            correto = False
+            print("\n\n\n> Start --------------------------------------------------")
+            self.p = Player()
+            """Commands = {
+                'q': Player.quit,
+                'h': Player.help,
+                's': Player.status,
+                'r': Player.rest,
+                'e': Player.explore,
+                'f': Player.flee,
+                'a': Player.attack,
+                'd': Player.defend,
+                'w': Player.special,
+                '0': Player.equip,
+            }"""
+            while correto is False:
+                print("Para Carregar ou Criar um personagem faça o Login")
+                self.p.name = str(input("User: "))
+                while self.p.name == "" or self.p.name == "\r\n" or self.p.name == " ":
+                    print("Não pode usar esse nome!")
+                    self.p.name = str(input("User: "))
+                result = self.app.get('/Personagens', self.p.name)
+                if result is not None:
+                    print("Personagem existente")
+                    self.senha = str(input("Senha: "))
+                    pwd = self.app.get('/Personagens/' + self.p.name, "Pass")
+                    if pwd == self.senha:
+                        self.carregarpersonagem(self.p.name)
+                        print("Carregado")
+                        correto = True
+                    else:
+                        print("Senha Incorreta!")
+                        correto = False
                 else:
-                    print("Senha Incorreta!")
-                    correto = False
-            else:
-                print("Novo Personagem")
-                senha = str(input("Senha: "))
-                self.p.race = str(input("Classe: "))
+                    print("Novo Personagem")
+                    self.senha = str(input("Senha: "))
+                    self.chooserace()
+                    correto = True
 
-                correto = True
+            self.p.bag['HpPot'] = 5
+            self.p.bag['SpPot'] = 5
+            self.p.coin = 1000
+
+            x = input("\nGostaria de Salvar seu progresso? (s/n): ")
+            if x == 's':
+                self.app.put('/Personagens/' + self.p.name, "Pass", self.senha)
+                self.app.put('/Personagens/' + self.p.name, "Nv", self.p.nv)
+                self.app.put('/Personagens/' + self.p.name, "Class", self.p.race)
+                self.app.put('/Personagens/' + self.p.name, "Hp", self.p.hp)
+                self.app.put('/Personagens/' + self.p.name, "HpMax", self.p.hpmax)
+                self.app.put('/Personagens/' + self.p.name, "Sp", self.p.sp)
+                self.app.put('/Personagens/' + self.p.name, "SpMax", self.p.spmax)
+                self.app.put('/Personagens/' + self.p.name, "Atk", self.p.atk)
+                self.app.put('/Personagens/' + self.p.name, "MAtk", self.p.matk)
+                self.app.put('/Personagens/' + self.p.name, "Def", self.p.defe)
+                self.app.put('/Personagens/' + self.p.name, "MDef", self.p.mdefe)
+                self.app.put('/Personagens/' + self.p.name, "Esq", self.p.esq)
+                self.app.put('/Personagens/' + self.p.name, "Crit", self.p.crit)
+                self.app.put('/Personagens/' + self.p.name, "Con", self.p.pcon)
+                self.app.put('/Personagens/' + self.p.name, "For", self.p.pfor)
+                self.app.put('/Personagens/' + self.p.name, "Dex", self.p.pdex)
+                self.app.put('/Personagens/' + self.p.name, "Int", self.p.pint)
+                self.app.put('/Personagens/' + self.p.name, "Skill", 'Espada de Fogo')
+                self.app.put('/Personagens/' + self.p.name, "Skill2", 'Lamina Envenenada')
+                self.app.put('/Personagens/' + self.p.name, "Skill3", '')
+                self. app.put('/Personagens/' + self.p.name, "Skill4", '')
+                self.app.put('/Personagens/' + self.p.name + '/Bag', "Coins", self.p.coin)
+                self.app.put('/Personagens/' + self.p.name + '/Bag', "Item", self.p.bag)
+
+
+if __name__ == "__main__":
+    Game().play()
 
