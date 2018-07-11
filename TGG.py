@@ -137,7 +137,13 @@ class Player(Character):
         self.sp = self.spmax
         a = ''
         while a == '':
-            print("(1)Machado De Ferro, (2)Marreta de Pedra, (3)Maça de Ferro")
+            print("""
+(1) Machado De Ferro  | (2) Marreta de Pedra  | (3) Maça de Ferro")
+    Atk:     11       |     Atk:     10       |     Atk:     10   
+    Dano:    8~14     |     Dano:    7~13     |     Dano:    7~13
+    Def:     +2       |     Con:     +1       |     Def:     +1
+    For:     +1       |     For:     +1       |     Con:     +2     
+                """)
             a = str(input("> "))
             try:
                 a = int(a)
@@ -145,22 +151,19 @@ class Player(Character):
                 print("Ainda não temos essa Arma")
                 a = ''
             if a == 1:
-                self.atk = 10
-                self.matk = 0
-                self.defe = 1
-                self.mdefe = 1
+                self.atk = 11
+                self.defe = 2
+                self.pfor = 1
                 return True
             elif a == 2:
-                self.atk = 8
-                self.matk = 0
-                self.defe = 2
-                self.mdefe = 2
+                self.atk = 10
+                self.pcon = 1
+                self.pfor = 1
                 return True
             elif a == 3:
-                self.atk = 11
-                self.matk = 0
+                self.atk = 10
                 self.defe = 1
-                self.mdefe = 0
+                self.pcon = 2
                 return True
             else:
                 print("Ainda não temos essa Arma")
@@ -173,7 +176,14 @@ class Player(Character):
         self.sp = self.spmax
         a = ''
         while a == '':
-            print("(1)Sabre Verde, (2)Sabre Azul, (3)Sabre Amarelo")
+            print("""
+(1) Sabre Verde   | (2) Sabre Azul   | (3) Sabre Amarelo")
+    Atk:     11   |     Atk:     10  |     Atk:     10   
+    Dano:    8~14 |     Dano:    7~13|     Dano:    7~13
+    Def:     +2   |     Con:     +1  |     Def:     +1
+    For:     +1   |     For:     +1  |     Con:     +2     
+    For:     +1   |     For:     +1  |     Con:     +2     
+                """)
             a = str(input("> "))
             try:
                 a = int(a)
@@ -527,9 +537,9 @@ class Game:
                     self.chooserace()
                     correto = True
 
-            self.p.bag['HpPot'] = 5
-            self.p.bag['SpPot'] = 5
-            self.p.coin = 1000
+            # self.p.bag['HpPot'] = 5
+            # self.p.bag['SpPot'] = 5
+            # self.p.coin = 1000
 
             x = input("\nGostaria de Salvar seu progresso? (s/n): ")
             if x == 's':
