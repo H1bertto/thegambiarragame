@@ -28,9 +28,8 @@ class Character:
         self.crit = 0
         self.esq = 0
 
-
     def dodamage(self, a):
-        self.dano = randint(a-int(a/3), a+a)
+        self.dano = randint(a-3, a+3)
 
 
 class Player(Character):
@@ -59,6 +58,8 @@ class Player(Character):
         self.anteresq = 0
         self.anterdefe = 0
         self.antermdefe = 0
+        self.armadisplay = "({0}) {name}\n\tAtk:\t{1}\n\tM.Atk:\t{2}\n\tDano:\t{3}\n\tDef:\t{4}" \
+                           "\n\tM.Def:\t{5}\n\tInt:\t{6}\n\tDex:\t{7}\n\tCon:\t{8}\n\tFor:\t{9}\n"
 
     def atualizaratribs(self):
         baseatk = self.pfor * 2 + self.pcon
@@ -95,14 +96,10 @@ class Player(Character):
         self.sp = self.spmax
         a = ''
         while a == '':
-            print("""
-(1) Adaga de Ferro  | (2) Punhal Dente de Urso  | (3) Estilingue de Madeira")
-    Atk:     10     |     Atk:     8            |     Atk:     11   
-    Dano:    7~13   |     Dano:    5~10         |     Dano:    8~14
-    Def:     +1     |     Def:     +2           |     Def:     +1
-    M.Def:   +1     |     M.Def:   +2           |     Dex:     +1
-    For:     +1     |     Con:     +1           |     
-                """)
+            # Indc / Atk / M.Atk / Dano / Def / M.Def / Int / Dex / Con / For / Name
+            print(self.armadisplay.format("1", "10", "0", "7~13", "+1", "+1", "0", "0", "0", "+1", name="Adaga de Ferro") +
+                  self.armadisplay.format("2", "8", "0", "5~10", "+2", "+2", "0", "0", "+1", "0", name="Punhal Dente de Urso") +
+                  self.armadisplay.format("3", "11", "0", "8~14", "+1", "0", "0", "+1", "0", "0", name="Estilingue de Madeira"))
             a = str(input("> "))
             try:
                 a = int(a)
@@ -110,21 +107,19 @@ class Player(Character):
                 print("Ainda não temos essa Arma")
                 a = ''
             if a == 1:
-                self.pfor += 1
                 self.atk = 10
                 self.defe = 1
                 self.mdefe = 1
                 return True
             elif a == 2:
-                self.pcon += 1
-                self.atk += 8
-                self.defe += 2
-                self.mdefe += 2
+                self.atk = 8
+                self.defe = 2
+                self.mdefe = 2
                 return True
             elif a == 3:
-                self.pdex += 1
-                self.atk += 11
-                self.defe += 1
+                self.atk = 11
+                self.defe = 1
+                self.pdex = 1
                 return True
             else:
                 print("Ainda não temos essa Arma")
@@ -137,13 +132,10 @@ class Player(Character):
         self.sp = self.spmax
         a = ''
         while a == '':
-            print("""
-(1) Machado De Ferro  | (2) Marreta de Pedra  | (3) Maça de Ferro")
-    Atk:     11       |     Atk:     10       |     Atk:     10   
-    Dano:    8~14     |     Dano:    7~13     |     Dano:    7~13
-    Def:     +2       |     Con:     +1       |     Def:     +1
-    For:     +1       |     For:     +1       |     Con:     +2     
-                """)
+            # Indc / Atk / M.Atk / Dano / Def / M.Def / Int / Dex / Con / For / Name
+            print(self.armadisplay.format("1", "11", "0", "8~14", "+2", "0", "0", "0", "0", "+1", name="Machado de Ferro") +
+                  self.armadisplay.format("2", "10", "0", "7~13", "0", "0", "0", "0", "+1", "+1", name="Marreta de Pedra") +
+                  self.armadisplay.format("3", "10", "0", "7~13", "+1", "0", "0", "0", "+2", "0", name="Maça de Ferro"))
             a = str(input("> "))
             try:
                 a = int(a)
@@ -176,14 +168,10 @@ class Player(Character):
         self.sp = self.spmax
         a = ''
         while a == '':
-            print("""
-(1) Sabre Verde   | (2) Sabre Azul   | (3) Sabre Amarelo")
-    Atk:     11   |     Atk:     10  |     Atk:     10   
-    Dano:    8~14 |     Dano:    7~13|     Dano:    7~13
-    Def:     +2   |     Con:     +1  |     Def:     +1
-    For:     +1   |     For:     +1  |     Con:     +2     
-    For:     +1   |     For:     +1  |     Con:     +2     
-                """)
+            # Indc / Atk / M.Atk / Dano / Def / M.Def / Int / Dex / Con / For / Name
+            print(self.armadisplay.format("1", "11", "0", "8~14", "0", "0", "0", "+1", "0", "+1", name="Sabre Verde") +
+                  self.armadisplay.format("2", "10", "0", "7~13", "0", "+1", "0", "0", "+1", "+1", name="Sabre Azul") +
+                  self.armadisplay.format("3", "10", "0", "7~13", "+1", "0", "0", "+1", "+1", "0", name="Sabre Amarelo"))
             a = str(input("> "))
             try:
                 a = int(a)
@@ -191,22 +179,21 @@ class Player(Character):
                 print("Ainda não temos essa Arma")
                 a = ''
             if a == 1:
-                self.atk = 10
-                self.matk = 0
-                self.defe = 1
-                self.mdefe = 1
+                self.atk = 11
+                self.pdex = 1
+                self.pfor = 1
                 return True
             elif a == 2:
-                self.atk = 8
-                self.matk = 0
-                self.defe = 2
-                self.mdefe = 2
+                self.atk = 10
+                self.mdefe = 1
+                self.pcon = 1
+                self.pfor = 1
                 return True
             elif a == 3:
-                self.atk = 11
-                self.matk = 0
+                self.atk = 10
                 self.defe = 1
-                self.mdefe = 0
+                self.pdex = 1
+                self.pcon = 1
                 return True
             else:
                 print("Ainda não temos essa Arma")
