@@ -28,7 +28,7 @@ class Character:
         self.crit = 0
         self.esq = 0
 
-    def dodamage(self, a):
+    def do_damage(self, a):
         self.dano = randint(a-3, a+3)
 
 
@@ -90,16 +90,16 @@ class Player(Character):
         self.antermdefe = basemdefe
 
     def politico(self):
-        self.hpmax = 170
+        self.hpmax = 175
         self.hp = self.hpmax
-        self.spmax = 160
+        self.spmax = 185
         self.sp = self.spmax
         a = ''
         while a == '':
             # Indc / Atk / M.Atk / Dano / Def / M.Def / Int / Dex / Con / For / Name
             print(self.armadisplay.format("1", "10", "0", "7~13", "+1", "+1", "0", "0", "0", "+1", name="Adaga de Ferro") +
-                  self.armadisplay.format("2", "8", "0", "5~10", "+2", "+2", "0", "0", "+1", "0", name="Punhal Dente de Urso") +
-                  self.armadisplay.format("3", "11", "0", "8~14", "+1", "0", "0", "+1", "0", "0", name="Estilingue de Madeira"))
+                  self.armadisplay.format("2", "8", "0", "5~10", "+2", "+1", "0", "0", "+1", "0", name="Punhal Dente de Urso") +
+                  self.armadisplay.format("3", "11", "0", "8~14", "+1", "0", "0", "+2", "0", "0", name="Estilingue de Madeira"))
             a = str(input("> "))
             try:
                 a = int(a)
@@ -110,31 +110,33 @@ class Player(Character):
                 self.atk = 10
                 self.defe = 1
                 self.mdefe = 1
+                self.pfor = 1
                 return True
             elif a == 2:
                 self.atk = 8
                 self.defe = 2
-                self.mdefe = 2
+                self.mdefe = 1
+                self.pcon = 1
                 return True
             elif a == 3:
                 self.atk = 11
                 self.defe = 1
-                self.pdex = 1
+                self.pdex = 2
                 return True
             else:
                 print("Ainda não temos essa Arma")
                 a = ''
 
     def viking(self):
-        self.hpmax = 200
+        self.hpmax = 210
         self.hp = self.hpmax
-        self.spmax = 130
+        self.spmax = 150
         self.sp = self.spmax
         a = ''
         while a == '':
             # Indc / Atk / M.Atk / Dano / Def / M.Def / Int / Dex / Con / For / Name
             print(self.armadisplay.format("1", "11", "0", "8~14", "+2", "0", "0", "0", "0", "+1", name="Machado de Ferro") +
-                  self.armadisplay.format("2", "10", "0", "7~13", "0", "0", "0", "0", "+1", "+1", name="Marreta de Pedra") +
+                  self.armadisplay.format("2", "10", "0", "7~13", "+1", "0", "0", "0", "+1", "+1", name="Marreta de Pedra") +
                   self.armadisplay.format("3", "10", "0", "7~13", "+1", "0", "0", "0", "+2", "0", name="Maça de Ferro"))
             a = str(input("> "))
             try:
@@ -149,6 +151,7 @@ class Player(Character):
                 return True
             elif a == 2:
                 self.atk = 10
+                self.defe = 1
                 self.pcon = 1
                 self.pfor = 1
                 return True
@@ -202,11 +205,14 @@ class Player(Character):
     def monge(self):
         self.hpmax = 160
         self.hp = self.hpmax
-        self.spmax = 190
+        self.spmax = 200
         self.sp = self.spmax
         a = ''
         while a == '':
-            print("(1)Orbes de Ferro, (2)Cajado de Ferro, (3)Punhos de Couro")
+            # Indc / Atk / M.Atk / Dano / Def / M.Def / Int / Dex / Con / For / Name
+            print(self.armadisplay.format("1", "0", "9", "6~12", "0", "+2", "+1", "0", "0", "0", name="Orbes de Ferro") +
+                  self.armadisplay.format("2", "0", "11", "8~14", "+1", "+1", "0", "+1", "0", "0", name="Bastão de Madeira") +
+                  self.armadisplay.format("3", "0", "10", "7~13", "+2", "0", "0", "0", "+1", "0", name="Punhos de Couro"))
             a = str(input("> "))
             try:
                 a = int(a)
@@ -214,29 +220,27 @@ class Player(Character):
                 print("Ainda não temos essa Arma")
                 a = ''
             if a == 1:
-                self.atk = 10
-                self.matk = 0
-                self.defe = 1
-                self.mdefe = 1
+                self.matk = 9
+                self.mdefe = 2
+                self.pint = 1
                 return True
             elif a == 2:
-                self.atk = 8
-                self.matk = 0
-                self.defe = 2
-                self.mdefe = 2
+                self.matk = 11
+                self.defe = 1
+                self.mdefe = 1
+                self.pdex = 1
                 return True
             elif a == 3:
-                self.atk = 11
-                self.matk = 0
-                self.defe = 1
-                self.mdefe = 0
+                self.matk = 10
+                self.defe = 2
+                self.pcon = 1
                 return True
             else:
                 print("Ainda não temos essa Arma")
                 a = ''
 
     def xaman(self):
-        self.hpmax = 160
+        self.hpmax = 170
         self.hp = self.hpmax
         self.spmax = 190
         self.sp = self.spmax
@@ -415,15 +419,15 @@ class Game:
     def chooserace(self):
         escolhido = False
         while escolhido is False:
-            print("   CLASSES         BASEADO EM         ESTILO                  SKILLS BASE                 ")
+            print("   CLASSES         BASEADO EM       ESTILO                        SKILLS BASE             ")
             print("(1) Politico    - [Mercenário] - Melee/Ranged      - S1: Imposto Alto | S2: Cobrar Imposto")
-            print("(2) Viking      - [Tank]       - Melee             - ")
-            print("(3) Jedi        - [Guerreiro]  - Melee/Ranged      - ")
-            print("(4) Monge       - [Mago]       - Melee/Mage        - ")
-            print("(5) Xaman       - [Invocador]  - Melee/Mage        - ")
-            print("(6) Constantine - [Mago Negro] - Melee/Mage        - ")
+            print("(2) Viking      - [Tank]       - Melee             - S1: ")
+            print("(3) Jedi        - [Guerreiro]  - Melee/Ranged      - S1: ")
+            print("(4) Monge       - [Mago]       - Melee/Mage        - S1: ")
+            print("(5) Xaman       - [Invocador]  - Caster/Mage       - S1: ")
+            print("(6) Constantine - [Mago Negro] - Caster/Mage       - S1: ")
             print("----------- Classe Liberada Apenas Para Reborn ----------")
-            print("(7) Avenger     - [Especial]   - Melee/Mage/Ranged - ")
+            print("(7) Avenger     - [Especial]   - Melee/Mage/Ranged - S1: ")
             a = str(input("Classe: "))
             try:
                 a = int(a)

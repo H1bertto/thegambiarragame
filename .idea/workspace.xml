@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fbf8e2d7-c0f9-4c9a-9b33-62bec8aaccaa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/humberto_v_souza.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/thegambiarragame.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/thegambiarragame.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TGG.py" beforeDir="false" afterPath="$PROJECT_DIR$/TGG.py" afterDir="false" />
     </list>
@@ -23,57 +19,49 @@
     <session id="-1399973178">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.34" value="1" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="20" />
+          <entry key="py" value="22" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="20" />
+          <entry key="Python" value="22" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="430" />
+          <entry key="py" value="611" />
+          <entry key="txt" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="430" />
+          <entry key="PLAIN_TEXT" value="15" />
+          <entry key="Python" value="611" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TGG.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="362" column="54" selection-start-line="362" selection-start-column="54" selection-end-line="362" selection-end-column="54" />
+            <state relative-caret-position="339">
+              <caret line="423" column="76" selection-start-line="423" selection-start-column="76" selection-end-line="423" selection-end-column="76" />
               <folding>
                 <element signature="e#0#52#0" expanded="true" />
-                <element signature="e#219#626#0" />
-                <element signature="e#664#700#0" />
-                <element signature="e#759#1639#0" />
-                <element signature="e#1394#2434#0" />
-                <element signature="e#2766#4038#0" />
-                <element signature="e#4445#5660#0" />
-                <element signature="e#5395#6681#0" />
-                <element signature="e#7043#8052#0" />
-                <element signature="e#8083#9099#0" />
-                <element signature="e#9136#10143#0" />
-                <element signature="e#10176#11177#0" />
-                <element signature="e#12166#12630#0" />
-                <element signature="e#12680#14440#0" />
-                <element signature="e#14476#16336#0" />
-                <element signature="e#16366#18188#0" />
-                <element signature="e#18218#20295#0" />
+                <element signature="e#663#692#0" expanded="true" />
+                <element signature="e#7737#8753#0" expanded="true" />
+                <element signature="e#8790#9797#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -100,8 +88,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="55" />
-    <option name="width" value="666" />
+    <option name="x" value="-65" />
+    <option name="y" value="-14" />
+    <option name="width" value="1318" />
     <option name="height" value="775" />
   </component>
   <component name="ProjectView">
@@ -127,7 +116,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.folding" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -181,20 +170,23 @@
       <option name="presentableId" value="Default" />
       <updated>1534461477420</updated>
     </task>
+    <task id="LOCAL-00001" summary="Add .format">
+      <created>1534468983957</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1534468983958</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="-8" width="1320" height="784" extended-state="6" />
+    <frame x="54" y="0" width="1319" height="775" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14417177" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14428243" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.48363096" />
@@ -202,18 +194,51 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="SciView" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14417177" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.48363096" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add .format" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add .format" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/firebase/__init__.py">
@@ -227,9 +252,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -237,29 +259,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="49" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/firebase/firebase_token_generator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#632#645#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/firebase/jsonutil.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/firebase/lazy.py">
       <provider selected="true" editor-type-id="text-editor" />
@@ -278,13 +285,7 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/../Kivy/TesteKivy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/../Kivy/teste2.py">
       <provider selected="true" editor-type-id="text-editor" />
@@ -296,91 +297,35 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/../Geral/FireFox.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/../TheGambiarra/teste.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="677" lean-forward="true" selection-start-line="677" selection-end-line="677" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-            <element signature="e#153#4046#0" />
-            <element signature="e#4114#6781#0" />
-            <element signature="e#6848#9235#0" />
-            <element signature="e#9295#9691#0" />
-            <element signature="e#9721#9792#0" />
-            <element signature="e#9823#10782#0" />
-            <element signature="e#10812#11019#0" />
-            <element signature="e#11051#12084#0" />
-            <element signature="e#12115#12202#0" />
-            <element signature="e#12232#13770#0" />
-            <element signature="e#13803#15446#0" />
-            <element signature="e#15476#15965#0" />
-            <element signature="e#16014#19171#0" />
-            <element signature="e#19204#19602#0" />
-            <element signature="e#19631#20613#0" />
-            <element signature="e#20644#21117#0" />
-            <element signature="e#21149#21713#0" />
-            <element signature="e#21752#23169#0" />
-            <element signature="e#23208#23705#0" />
-            <element signature="e#23752#25504#0" />
-            <element signature="e#25534#26757#0" />
-            <element signature="e#26787#29552#0" />
-            <element signature="e#29585#30207#0" />
-            <element signature="e#30237#38347#0" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../TrabalhoSO/Rascunho.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1122">
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-1122" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../TrabalhoSO/File.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Teste.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/TGG.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="362" column="54" selection-start-line="362" selection-start-column="54" selection-end-line="362" selection-end-column="54" />
+        <state relative-caret-position="339">
+          <caret line="423" column="76" selection-start-line="423" selection-start-column="76" selection-end-line="423" selection-end-column="76" />
           <folding>
             <element signature="e#0#52#0" expanded="true" />
-            <element signature="e#219#626#0" />
-            <element signature="e#664#700#0" />
-            <element signature="e#759#1639#0" />
-            <element signature="e#1394#2434#0" />
-            <element signature="e#2766#4038#0" />
-            <element signature="e#4445#5660#0" />
-            <element signature="e#5395#6681#0" />
-            <element signature="e#7043#8052#0" />
-            <element signature="e#8083#9099#0" />
-            <element signature="e#9136#10143#0" />
-            <element signature="e#10176#11177#0" />
-            <element signature="e#12166#12630#0" />
-            <element signature="e#12680#14440#0" />
-            <element signature="e#14476#16336#0" />
-            <element signature="e#16366#18188#0" />
-            <element signature="e#18218#20295#0" />
+            <element signature="e#663#692#0" expanded="true" />
+            <element signature="e#7737#8753#0" expanded="true" />
+            <element signature="e#8790#9797#0" expanded="true" />
           </folding>
         </state>
       </provider>
