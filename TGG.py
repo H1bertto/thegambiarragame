@@ -372,7 +372,7 @@ class Game:
             if len(x) == 4:
                 x = ''
             print("", end="\rCarregando" + x)
-            time.sleep(.4)
+            time.sleep(.3)
         print("", end="\r")
 
     def verificarversion(self):
