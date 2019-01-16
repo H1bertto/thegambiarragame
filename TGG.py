@@ -27,14 +27,71 @@ class Character:
         self.pdex = 0
         self.crit = 0
         self.esq = 0
+        self.dic_enemy = {
+                          0: "THE GAMBIARRA",  # ULTRA BOSS
+                          1: "Thanos",
+                          2: "Dragão Branco de Olhos Azuis",
+                          3: "Seu Chefe",
+                          4: "Papai Noel",
+                          5: "Darth Vader",
+                          6: "Michel Temer",
+                          7: "Bolsonaro",
+                          8: "Ghal",
+                          9: "Neymar",
+                          10: "Ex peguete",
+                          11: "Dorid",
+                          12: "Cabal Sinistro",
+                          13: "Motorista do Busão",
+                          14: "Massagista Tailandeza",
+                          15: "Roberval",
+                          16: "Assaltante Favelado",
+                          17: "Storm Trooper",
+                          18: "Menina do Tinder",
+                          19: "Fila do Refeitorio",
+                          20: "Fornecedor",
+                          21: "Esqueleto Magico",
+                          22: "Pirata Raivoso",
+                          23: "Árvore Monstro",
+                          24: "Inumano",
+                          25: "Soldado da Legião Vermelha",
+                          26: "Vex",
+                          27: "Decaido",
+                          28: "Bowser",
+                          29: "Fantasma",
+                          30: "Eleitor Fanatico",
+                          31: "Vespa Mutante",
+                          32: "Lobo Feroz",
+                          33: "Zumbi",
+                          34: "Trol",
+                          35: "Orc",
+                          36: "Goblin",
+                         }
+        self.dic_places = {}
 
-    def do_damage(self, a):
-        self.dano = randint(a-3, a+3)
+    def do_damage(self, enemy):
+        damage = min(
+            max(randint(0, self.hp) - randint(0, enemy.hp), 0),
+            enemy.hp)
+        enemy.hp = enemy.hp - damage
+        if damage == 0:
+            print("%s desvia do atk de %s'." % (enemy.name, self.name))
+        else:
+            print("%s acerta %d de dano em %s!" % (self.name, damage, enemy.name))
+        return enemy.hp <= 0
+
+
+class Enemy(Character):
+    def __init__(self, player):
+        Character.__init__(self)
+        self.name = self.dic_enemy[randint(0, len(self.dic_enemy))]
+        self.hp = randint(1, player.hp)
 
 
 class Player(Character):
     def __init__(self):
         Character.__init__(self)
+        self.enemy = None
+        self.state = 'normal'
         self.facction = ''
         self.reborn = False
         self.pcon = 5
@@ -246,7 +303,10 @@ class Player(Character):
         self.sp = self.spmax
         a = ''
         while a == '':
-            print("(1)Espirito de Urso, (2)Espirito de Rapoza, (3)Espirito de Águia")
+            # Indc / Atk / M.Atk / Dano / Def / M.Def / Int / Dex / Con / For / Name
+            print(self.armadisplay.format("1", "0", "9", "6~12", "+2", "0", "0", "+1", "0", "0", name="Espirito de Urso") +
+                  self.armadisplay.format("2", "0", "11", "8~14", "0", "0", "+3", "0", "0", "0", name="Espirito de Rapoza") +
+                  self.armadisplay.format("3", "0", "10", "7~13", "+1", "0", "0", "0", "0", "+2", name="Espirito de Águia"))
             a = str(input("> "))
             try:
                 a = int(a)
@@ -254,22 +314,18 @@ class Player(Character):
                 print("Ainda não temos essa Arma")
                 a = ''
             if a == 1:
-                self.atk = 10
-                self.matk = 0
-                self.defe = 1
-                self.mdefe = 1
+                self.matk = 9
+                self.defe = 2
+                self.pcon = 1
                 return True
             elif a == 2:
-                self.atk = 8
-                self.matk = 0
-                self.defe = 2
-                self.mdefe = 2
+                self.matk = 11
+                self.pdex = 3
                 return True
             elif a == 3:
-                self.atk = 11
-                self.matk = 0
+                self.matk = 10
                 self.defe = 1
-                self.mdefe = 0
+                self.pfor = 2
                 return True
             else:
                 print("Ainda não temos essa Arma")
@@ -283,6 +339,10 @@ class Player(Character):
         a = ''
         while a == '':
             print("(1)Bastão de Ossos, (2)Cajado de Madeira, (3)Foice Lisa")
+            # Indc / Atk / M.Atk / Dano / Def / M.Def / Int / Dex / Con / For / Name
+            print(self.armadisplay.format("1", "0", "9", "6~12", "+2", "0", "0", "+1", "0", "0", name="Espirito de Urso") +
+                  self.armadisplay.format("2", "0", "11", "8~14", "0", "0", "+3", "0", "0", "0", name="Espirito de Rapoza") +
+                  self.armadisplay.format("3", "0", "10", "7~13", "+1", "0", "0", "0", "0", "+2", name="Espirito de Águia"))
             a = str(input("> "))
             try:
                 a = int(a)
@@ -347,6 +407,92 @@ class Player(Character):
                 print("Ainda não temos essa Arma")
                 a = ''
 
+    # Ações
+    def quit(self):
+        print("%s can't find the way back home, and dies of starvation.\nR.I.P." % self.name)
+        self.hp = 0
+
+    def help(self):
+        pass
+
+    def status(self):
+        print("%s's HP: %d/%d" % (self.name, self.hp, self.hpmax))
+        try:
+            print("%s's HP: %d/%d" % (self.enemy.name, self.enemy.hp, self.enemy.hpmax))
+        except AttributeError:
+            pass
+
+    def tired(self):
+        print("%s fica cansado." % self.name)
+        self.hp = max(1, self.hp - 1)
+
+    def rest(self):
+        if self.state != 'normal':
+            print("%s não pode descansar agora!" % self.name)
+            self.enemy_attacks()
+        else:
+            print("%s descansa e se recupera." % self.name)
+        if randint(0, 1):
+            self.enemy = Enemy(self)
+            print("%s é brutalmente atacado por %s!" % (self.name, self.enemy.name))
+            self.state = 'fight'
+            self.enemy_attacks()
+        else:
+            if self.hp < self.hpmax:
+                self.hp = self.hp + randint(10, 30)
+                if self.hp > self.hpmax:
+                    self.hp = self.hpmax
+            else:
+                print("%s descança demais." % self.name)
+                self.hp = self.hp - 1
+
+    def explore(self):
+        if self.state != 'normal':
+            print("%s está ocupado agora!" % self.name)
+            self.enemy_attacks()
+        else:
+            print("%s explora uma pssagem sinuosa." % self.name)
+            if randint(0, 1):
+                self.enemy = Enemy(self)
+                print("%s encontra %s!" % (self.name, self.enemy.name))
+                self.state = 'fight'
+            else:
+                if randint(0, 1) and randint(0, 1):
+                    self.tired()
+
+    def flee(self):
+        if self.state != 'fight':
+            print("%s anda em circulos, parece retardado." % self.name)
+            self.tired()
+        else:
+            if randint(1, self.hp + 5) > randint(1, self.enemy.hp):
+                print("%s é covarde e foge da luta %s." % (self.name, self.enemy.name))
+                self.enemy = None
+                self.state = 'normal'
+            else:
+                print("%s não pode fugir agora %s!" % (self.name, self.enemy.name))
+                self.enemy_attacks()
+
+    def attack(self):
+        if self.state != 'fight':
+            print("%s ataca o ar, que burro da 0 pra ele." % self.name)
+            self.tired()
+        else:
+            if self.do_damage(self.enemy):
+                print("%s executa %s!" % (self.name, self.enemy.name))
+                self.enemy = None
+                self.state = 'normal'
+                if randint(0, self.hp) < self.hpmax:
+                    self.hp = self.hp + 1
+                    self.hpmax = self.hpmax + 1
+                    print("%s fica mais forte!" % self.name)
+            else:
+                self.enemy_attacks()
+
+    def enemy_attacks(self):
+        if self.enemy.do_damage(self):
+            print("%s morreu por ser fraco de mais %s!!!\nR.I.P." % (self.name, self.enemy.name))
+
 
 class Game:
     def __init__(self):
@@ -364,7 +510,7 @@ class Game:
         self.continua = True
         self.senha = ''
         self.app = FirebaseApplication('https://thegambiarragame.firebaseio.com', authentication=None)
-        self.authentication = FirebaseAuthentication('', 'thegambiarra2@gmail.com', extra={'id': 123})
+        self.authentication = FirebaseAuthentication('4PjjnBreuNDHH1vEnFcmURL2nVSNHRHR1vl5voIk', 'thegambiarra2@gmail.com', extra={'id': 123})
         self.app.authentication = self.authentication
         x = ''
         for i in range(11):
@@ -488,11 +634,12 @@ class Game:
 
     def play(self):
         self.verificarversion()
+        new = 0
         while self.continua:
             correto = False
             print("\n> Start --------------------------------------------------")
             self.p = Player()
-            """Commands = {
+            Commands = {
                 'q': Player.quit,
                 'h': Player.help,
                 's': Player.status,
@@ -500,10 +647,10 @@ class Game:
                 'e': Player.explore,
                 'f': Player.flee,
                 'a': Player.attack,
-                'd': Player.defend,
-                'w': Player.special,
-                '0': Player.equip,
-            }"""
+                'd': 'Player.defend',
+                'w': 'Player.special',
+                '0': 'Player.equip',
+            }
             while correto is False:
                 print("Para Carregar ou Criar um personagem faça o Login")
                 self.p.name = str(input("User: "))
@@ -524,13 +671,35 @@ class Game:
                         correto = False
                 else:
                     print("Novo Personagem")
+                    new = 1
                     self.senha = str(input("Senha: "))
                     self.chooserace()
                     correto = True
 
-            # self.p.bag['HpPot'] = 5
-            # self.p.bag['SpPot'] = 5
-            # self.p.coin = 1000
+            print("Bem Vindo ao Gambiarra World!")
+            if new == 1:
+                print("Você ganhou o pacote de iniciante: ")
+                print("- Coins = 1000")
+                self.p.coin = 1000
+                print("- Pot HP = 5")
+                self.p.bag['HpPot'] = 5
+                print("- Pot SP = 5")
+                self.p.bag['SpPot'] = 5
+                new = 0
+            print("Comece a explorar!")
+            while self.p.hp > 0:
+                line = input("> ")
+                args = line.split()
+                if len(args) > 0:
+                    commandFound = False
+                    for c in Commands.keys():
+                        if args[0] == c[:len(args[0])]:
+                            Commands[c](self.p)
+                            commandFound = True
+                            break
+                    if not commandFound:
+                        print("%s não pode fazer isso agora." % self.p.name)
+
 
             x = input("\nGostaria de Salvar seu progresso? (s/n): ")
             if x == 's':
