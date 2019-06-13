@@ -56,7 +56,8 @@ class Character:
                              22: 'o Sol',
                              23: 'sua Casa',
                              24: 'a Russia',
-                             25: 'rua la de casa'}
+                             25: 'rua la de casa',
+                             }
         self.dic_enemy = {1: 'Darth Vader',
                           2: 'Thanos',
                           3: 'Michel Temer',
@@ -86,7 +87,8 @@ class Character:
                           27: 'Sua Sombra',
                           28: 'Neymar',
                           29: 'Roberval',
-                          30: 'Menina do Tinder'}
+                          30: 'Menina do Tinder',
+                          }
         self.dic_arma = {1: self.espadafogo,
                          2: self.lancafog,
                          3: self.hadouken,
@@ -138,7 +140,8 @@ class Character:
                 doutk = 1
                 print('Double ATK!!!')
                 enemy.health = enemy.health - damage
-                enemy.health = tank + enemy.health - damage
+
+        enemy.health = tank + enemy.health - damage
         if damage == 0:
             print('%s desvia do ataque de %s.' % (enemy.name, self.name))
         elif special == 0 and skill == 6 and doutk == 1:
@@ -168,59 +171,49 @@ class Enemy(Character):
             self.health = int(player.health_max + player.health_max * 2)
             self.health_max = self.health
             self.arma = int(self.dic_arma[randint(1, len(self.dic_arma))]) + 5
+        elif self.name == 'Michel Temer' or self.name == 'The Gambiarra' or self.name == 'Donald Trump' or self.name == 'Juiz dos Erros Mexicano':
+            print('Boss!!!')
+            self.health = int(player.health_max + player.health_max + 15)
+            self.health_max = self.health
+            self.arma = int(self.dic_arma[randint(1, len(self.dic_arma))]) + 3
+        elif randint(0, 1):
+            print('Normal!')
+            self.health = randint(10, player.health_max)
+            self.health_max = self.health
+            self.arma = int(self.dic_arma[randint(1, len(self.dic_arma))])
         else:
-            if self.name == 'Michel Temer' or self.name == 'The Gambiarra' or self.name == 'Donald Trump' or self.name == 'Juiz dos Erros Mexicano':
-                print('Boss!!!')
-                self.health = int(player.health_max + player.health_max + 15)
-                self.health_max = self.health
-                self.arma = int(self.dic_arma[randint(1, len(self.dic_arma))]) + 3
-            else:
-                if randint(0, 1):
-                    print('Normal!')
-                    self.health = randint(10, player.health_max)
-                    self.health_max = self.health
-                    self.arma = int(self.dic_arma[randint(1, len(self.dic_arma))])
-                else:
-                    print('Fraco!')
-                    self.health = randint(1, player.health_max - 10)
-                    self.health_max = self.health
-                    self.arma = int(self.dic_arma[randint(1, len(self.dic_arma))]) - 3
-            if self.arma < 1:
-                self.arma = 1
-            if player.nv > 100:
-                self.health_max += 20
-                self.arma += 20
-            else:
-                if player.nv > 80:
-                    self.health_max += 15
-                    self.arma += 17
-                else:
-                    if player.nv > 65:
-                        self.health_max += 10
-                        self.arma += 14
-                    else:
-                        if player.nv > 50:
-                            self.health_max += 5
-                            self.arma += 10
-                        else:
-                            if player.nv > 40:
-                                self.arma += 7
-                            else:
-                                if player.nv > 30:
-                                    self.arma += 5
-                                else:
-                                    if player.nv > 20:
-                                        self.arma += 4
-                                    else:
-                                        if player.nv > 15:
-                                            self.arma += 3
-                                        else:
-                                            if player.nv > 10:
-                                                self.arma += 2
-                                            else:
-                                                if player.nv > 5:
-                                                    self.arma += 1
-            self.health = self.health_max
+            print('Fraco!')
+            self.health = randint(1, player.health_max - 10)
+            self.health_max = self.health
+            self.arma = int(self.dic_arma[randint(1, len(self.dic_arma))]) - 3
+
+        if self.arma < 1:
+            self.arma = 1
+        if player.nv > 100:
+            self.health_max += 20
+            self.arma += 20
+        elif player.nv > 80:
+            self.health_max += 15
+            self.arma += 17
+        elif player.nv > 65:
+            self.health_max += 10
+            self.arma += 14
+        elif player.nv > 50:
+            self.health_max += 5
+            self.arma += 10
+        elif player.nv > 40:
+            self.arma += 7
+        elif player.nv > 30:
+            self.arma += 5
+        elif player.nv > 20:
+            self.arma += 4
+        elif player.nv > 15:
+            self.arma += 3
+        elif player.nv > 10:
+            self.arma += 2
+        elif player.nv > 5:
+            self.arma += 1
+        self.health = self.health_max
 
 
 class Player(Character):
@@ -250,8 +243,16 @@ class Player(Character):
     def equip(self):
         a = ''
         while a == '':
-            print('Escolha a Arma')
-            print('(1)Excalibur, (2)Lanca Missil, (3)Hadouken, (4)Mjolnir, (5)Arma de Paintball (6)Sabre de Luz (7)Peido da Vovo, (8)Desintegrator de Almas, (9)Shuriken')
+            print('Escolha a Arma:')
+            print('(1)Excalibur\n'
+                  '(2)Lanca Missil\n'
+                  '(3)Hadouken\n'
+                  '(4)Mjolnir\n'
+                  '(5)Arma de Paintball\n'
+                  '(6)Sabre de Luz\n'
+                  '(7)Peido da Vovo\n'
+                  '(8)Desintegrator de Almas\n'
+                  '(9)Shuriken')
             a = input('> ')
             try:
                 a = int(a)
@@ -269,37 +270,29 @@ class Player(Character):
     def status(self):
         if self.skill == 1:
             sk = 'Lifesteal'
+        elif self.skill == 2:
+            sk = 'Frenzy'
+        elif self.skill == 3:
+            sk = 'Invisible'
+        elif self.skill == 4:
+            sk = 'Super Hero'
+        elif self.skill == 5:
+            sk = 'Full Tank'
+        elif self.skill == 6:
+            sk = 'Double ATK'
         else:
-            if self.skill == 2:
-                sk = 'Frenzy'
-            else:
-                if self.skill == 3:
-                    sk = 'Invisible'
-                else:
-                    if self.skill == 4:
-                        sk = 'Super Hero'
-                    else:
-                        if self.skill == 5:
-                            sk = 'Full Tank'
-                        else:
-                            if self.skill == 6:
-                                sk = 'Double ATK'
-                            else:
-                                sk = 'Sem Skill'
+            sk = 'Sem Skill'
         try:
-            print('%s --- STATUS ---' % self.name)
-            print('> HP: %d/%d | ATK: %d | NV: %d | EXP: %d/%d | TITULO: %s' % (
-             self.health, self.health_max, self.arma, self.nv, self.experience, self.experience_max, self.titulo))
-            print('> SKILL: %s | SPECIAL: %d | HP POT: %d | KILLS: %d | BAUS: %d' % (
-             sk, self.use, self.hppot, self.kills, self.tesouro))
-            print('%s --- STATUS ---' % self.enemy.name)
-            print('> HP: %d/%d | ATK: %d' % (
-             self.enemy.health, self.enemy.health_max, self.enemy.arma))
+            print(f'{self.name} --- STATUS ---')
+            print(f'> HP: {self.health}/{self.health_max} | ATK: {self.arma} | NV: {self.nv} | EXP: {self.experience}/{self.experience_max} | TITULO: {self.titulo}')
+            print(f'> SKILL: {sk} | SPECIAL: {self.use} | HP POT: {self.hppot} | KILLS: {self.kills} | BAUS: {self.tesouro}')
+            print(f'{self.enemy.name} --- STATUS ---')
+            print(f'> HP: {self.enemy.health}/{self.enemy.health_max} | ATK: {self.enemy.arma}')
         except AttributeError:
             pass
 
     def tired(self):
-        print('%s sente-se cansado.' % self.name)
+        print(f'{self.name} sente-se cansado.')
         self.health = max(1, self.health - 1)
 
     def rest(self):
@@ -310,34 +303,36 @@ class Player(Character):
             else:
                 self.hppot -= 1
                 if self.health < self.health_max:
-                    self.health += randint(4, 8)
+                    if self.nv > 70:
+                        self.health += randint(8, 12)
+                    elif self.nv > 50:
+                        self.health += randint(5, 9)
+                    else:
+                        self.health += randint(3, 7)
                     if self.health > self.health_max:
                         self.health = self.health_max
                 print('%s se cura.   |Potes: %d   |HP: %d/%d' % (self.name, self.hppot, self.health, self.health_max))
-        else:
+        elif randint(0, 1) and randint(0, 1) and randint(0, 1):
+            self.enemy = Enemy(self)
+            print('%s e rudemente despertado por %s!' % (self.name, self.enemy.name))
+            self.state = 'fight'
             if randint(0, 1):
-                if randint(0, 1):
-                    if randint(0, 1):
-                        self.enemy = Enemy(self)
-                        print('%s e rudemente despertado por %s!' % (self.name, self.enemy.name))
-                        self.state = 'fight'
-                        if randint(0, 1):
-                            self.defend()
-                        else:
-                            self.enemy_attacks()
-                    if self.health < self.health_max:
-                        if self.nv > 70:
-                            self.health += randint(8, 12)
-                        else:
-                            if self.nv > 50:
-                                self.health += randint(5, 9)
-                            else:
-                                self.health += randint(3, 7)
-                        if self.health > self.health_max:
-                            self.health = self.health_max
-                        print('%s se recupera.    |HP: %d/%d' % (self.name, self.health, self.health_max))
-                    else:
-                        print('%s dorme demais.' % self.name)
+                self.defend()
+            else:
+                self.enemy_attacks()
+        else:
+            if self.health < self.health_max:
+                if self.nv > 70:
+                    self.health += randint(8, 12)
+                elif self.nv > 50:
+                    self.health += randint(5, 9)
+                else:
+                    self.health += randint(3, 7)
+                if self.health > self.health_max:
+                    self.health = self.health_max
+                print('%s se recupera.    |HP: %d/%d' % (self.name, self.health, self.health_max))
+            else:
+                print('%s dorme demais.' % self.name)
 
     def explore(self):
         if self.state != 'normal':
@@ -350,50 +345,39 @@ class Player(Character):
                 print('%s encontra %s!' % (self.name, self.enemy.name))
                 self.state = 'fight'
                 self.exploration = 0
-            else:
-                if self.exploration == 3:
-                    self.exploration = 0
-                    self.tired()
+            elif self.exploration == 3:
+                self.exploration = 0
+                self.tired()
+            elif randint(0, 1) and randint(0, 1) and randint(0, 1) and randint(0, 1) and randint(0, 1) and randint(0, 1):
+                self.treasure()
+            elif randint(0, 1) and randint(0, 1) and randint(0, 1) and randint(0, 1):
+                if randint(0, 1):
+                    print('%s encontra Comida!' % self.name)
+                    if self.health < self.health_max:
+                        self.health += randint(3, 5)
+                        if self.health > self.health_max:
+                            self.health = self.health_max
                 else:
-                    if randint(0, 1):
-                        if randint(0, 1):
-                            if randint(0, 1):
-                                pass
-        if randint(0, 1):
-            if randint(0, 1):
-                if randint(0, 1):
-                    self.treasure()
-                if randint(0, 1):
-                    if randint(0, 1):
-                        if randint(0, 1):
-                            if randint(0, 1):
-                                if randint(0, 1):
-                                    print('%s encontra Comida!' % self.name)
-                                    if self.health < self.health_max:
-                                        self.health += randint(3, 5)
-                                        if self.health > self.health_max:
-                                            self.health = self.health_max
-                                        else:
-                                            print('%s encontra uma Fonte de Agua!' % self.name)
-                                            if self.health < self.health_max:
-                                                self.health += randint(1, 3)
-                                                if self.health > self.health_max:
-                                                    self.health = self.health_max
-                                    self.exploration += 1
-                                    print('Nada por aqui...')
+                    print('%s encontra uma Fonte de Agua!' % self.name)
+                    if self.health < self.health_max:
+                        self.health += randint(1, 3)
+                        if self.health > self.health_max:
+                            self.health = self.health_max
+            else:
+                self.exploration += 1
+                print('Nada por aqui...')
 
     def flee(self):
         if self.state != 'fight':
             print('%s corre em circulos por um tempo.' % self.name)
             self.tired()
+        elif randint(1, self.health + 5) > randint(1, self.enemy.health):
+            print('%s foge de %s.' % (self.name, self.enemy.name))
+            self.enemy = None
+            self.state = 'normal'
         else:
-            if randint(1, self.health + 5) > randint(1, self.enemy.health):
-                print('%s foge de %s.' % (self.name, self.enemy.name))
-                self.enemy = None
-                self.state = 'normal'
-            else:
-                print('%s nao pode escapar de %s!' % (self.name, self.enemy.name))
-                self.enemy_attacks()
+            print('%s nao pode escapar de %s!' % (self.name, self.enemy.name))
+            self.enemy_attacks()
 
     def attack(self, s=None, sk=None):
         if self.skill != 0 or self.skill is not None:
@@ -403,91 +387,69 @@ class Player(Character):
         if self.state != 'fight':
             print('%s golpeia o ar, sem resultados notaveis.' % self.name)
             self.tired()
-        else:
-            if self.do_damage(self.enemy, s, sk):
-                print('K.O.!')
-                print('%s executa %s!' % (self.name, self.enemy.name))
-                self.kills += 1
-        if self.enemy.name == 'Thanos':
-            self.experience += int(self.experience_max / 2 + randint(6, 10))
-            self.kpoints += 2000
-            self.bossk += 2
-            self.newtitulo = '<{{{>AVENGER<}}}>'
-            if randint(0, 1) and randint(0, 1):
-                print('Drop: Pote de HP')
-                self.hppot += 1
-            if randint(0, 1):
-                if randint(0, 1):
-                    pass
-        if randint(0, 1):
-            if randint(0, 1):
-                if randint(0, 1):
-                    if randint(0, 1):
-                        if randint(0, 1):
-                            self.treasure(1)
-                        self.treasure()
-                    self.title()
+        elif self.do_damage(self.enemy, s, sk):
+            print('K.O.!')
+            print('%s executa %s!' % (self.name, self.enemy.name))
+            self.kills += 1
+            if self.enemy.name == 'Thanos' or self.enemy.name == 'Darth Vader':
+                self.experience += int(self.experience_max / 2 + randint(6, 10))
+                self.kpoints += 2000
+                self.bossk += 2
+                if self.enemy.name == 'Thanos':
+                    self.newtitulo = '<{{{>AVENGER<}}}>'
                 else:
-                    if self.enemy.name == 'Darth Vader':
-                        self.experience += int(self.experience_max / 2 + randint(6, 10))
-                        self.kpoints += 1000
-                        self.bossk += 2
-                        self.newtitulo = '{{ JEDI MASTER }}'
-                        if randint(0, 1):
-                            if randint(0, 1):
-                                print('Drop: Pote de HP')
-                                self.hppot += 1
-                        self.title()
+                    self.newtitulo = '{#}JEDI MASTER{#}'
+                if randint(0, 1) and randint(0, 1):
+                    print('Drop: Pote de HP')
+                    self.hppot += 1
+                elif randint(0, 1) and randint(0, 1) and randint(0, 1) and randint(0, 1) and randint(0, 1) and randint(0, 1) and randint(0, 1):
+                    self.treasure(1)
+                else:
+                    self.treasure()
+                    self.title()
+            elif self.enemy.name == 'Michel Temer' or self.enemy.name == 'The Gambiarra' or self.enemy.name == 'Donald Trump' or self.enemy.name == 'Juiz dos Erros Mexicano':
+                self.experience += int(self.experience_max / 3 + randint(2, 6))
+                self.kpoints += 100
+                self.bossk += 1
+                if randint(0, 1) and randint(0, 1):
+                    print('Drop: Pote de HP')
+                    self.hppot += 1
+                elif randint(0, 1) and randint(0, 1) and randint(0, 1) and randint(0, 1):
+                    print('Drop: Pote de HP')
+                    self.hppot += 1
+                    self.kpoints += 10
+                    if self.nv > 50:
+                        self.experience += randint(4, 8)
                     else:
-                        if self.enemy.name == 'Michel Temer' or self.enemy.name == 'The Gambiarra' or self.enemy.name == 'Donald Trump' or self.enemy.name == 'Juiz dos Erros Mexicano':
-                            self.experience += int(self.experience_max / 3 + randint(2, 6))
-                            self.kpoints += 100
-                            self.bossk += 1
-                            if randint(0, 1):
-                                if randint(0, 1):
-                                    print('Drop: Pote de HP')
-                                    self.hppot += 1
-                                else:
-                                    if randint(0, 1):
-                                        if randint(0, 1):
-                                            if randint(0, 1):
-                                                if randint(0, 1):
-                                                    print('Drop: Pote de HP')
-                                                    self.hppot += 1
-                                    self.kpoints += 10
-                                    if self.nv > 50:
-                                        self.experience += randint(4, 8)
-                                    else:
-                                        self.experience += randint(1, 5)
-                    if self.bossk == 20:
-                        self.newtitulo = '<))>>K. BOSS<<((>'
-                        self.title()
-                    if 20000 <= self.kpoints < 20500:
-                        if self.titulo != ')>>  MURDERER <<(':
-                            self.newtitulo = ')>> :MURDERER <<('
-                            self.title()
-                        if 6000 <= self.kpoints < 6500:
-                            if self.titulo != ':>>>  SLAYER <<<:':
-                                self.newtitulo = ':>>>  SLAYER <<<:'
-                                self.title()
-                    self.enemy = None
-                    self.state = 'normal'
-                    self.lvl()
-            else:
-                self.enemy_attacks()
+                        self.experience += randint(1, 5)
+            if self.bossk == 20:
+                self.newtitulo = '<))>>K. BOSS<<((>'
+                self.title()
+            if 20000 <= self.kpoints < 20500 and self.titulo != ')>>  MURDERER <<(':
+                self.newtitulo = ')>> :MURDERER <<('
+                self.title()
+            if 6000 <= self.kpoints < 6500:
+                if self.titulo != ':>>>  SLAYER <<<:':
+                    self.newtitulo = ':>>>  SLAYER <<<:'
+                    self.title()
+            self.enemy = None
+            self.state = 'normal'
+            self.lvl()
+        else:
+            self.enemy_attacks()
 
     def special(self):
-        if self.skill == 4:
-            if self.health_max >= 24:
-                if self.use <= 10:
-                    self.use += 1
-                    self.attack(s=0)
-            print('Special nao liberado')
+        if self.skill == 4 and self.health_max >= 24:
+            if self.use <= 10:
+                self.use += 1
+                self.attack(s=0)
+            else:
+                print('Special nao liberado')
         else:
-            if self.health_max >= 24:
-                if self.use < 4:
-                    self.use += 1
-                    self.attack(s=0)
+            if self.health_max >= 24 and self.use < 4:
+                self.use += 1
+                self.attack(s=0)
+            else:
                 print('Special nao liberado')
 
     def lvl(self):
@@ -505,21 +467,16 @@ class Player(Character):
                 self.arma += 1
             if self.nv == 5:
                 self.newtitulo = '    - NOOB -     '
-            else:
-                if self.nv == 15:
-                    self.newtitulo = '   < TECHNO >    '
-                else:
-                    if self.nv == 30:
-                        self.newtitulo = '  .> WARRIOR <.  '
-                    else:
-                        if self.nv == 50:
-                            self.newtitulo = '.^z. KNIGTH .z^. '
-                        else:
-                            if self.nv == 70:
-                                self.newtitulo = '  SUPREMO  '
-                            else:
-                                if self.nv == 100:
-                                    self.newtitulo = '<<|>IMPERADOR<|>>'
+            elif self.nv == 15:
+                self.newtitulo = '   < TECHNO >    '
+            elif self.nv == 30:
+                self.newtitulo = '  .> WARRIOR <.  '
+            elif self.nv == 50:
+                self.newtitulo = '.^z. KNIGTH .z^. '
+            elif self.nv == 70:
+                self.newtitulo = '  SUPREMO  '
+            elif self.nv == 100:
+                self.newtitulo = '<<|>IMPERADOR<|>>'
             self.title()
 
     def title(self):
@@ -538,20 +495,19 @@ class Player(Character):
         if self.state != 'fight':
             print('%s parece um covarde, se escondendo atras do escudo.' % self.name)
             self.tired()
+        elif randint(0, 1) and randint(0, 1):
+            print('%s nao consegue defender o ataque de %s!' % (self.name, self.enemy.name))
+            self.enemy_attacks()
         else:
+            print('%s bloqueia o ataque de %s!' % (self.name, self.enemy.name))
             if randint(0, 1):
-                print('%s nao consegue defender o ataque de %s!' % (self.name, self.enemy.name))
-                self.enemy_attacks()
-            else:
-                print('%s bloqueia o ataque de %s!' % (self.name, self.enemy.name))
-                if randint(0, 1):
-                    print('%s contra ataca %s!' % (self.name, self.enemy.name))
-                    self.attack()
+                print('%s contra ataca %s!' % (self.name, self.enemy.name))
+                self.attack()
 
     def treasure(self, e=0):
         if e == 1:
             print('%s encontra um Bau Divino!!!' % self.name)
-            print('Arma >> Manopla do Infinito Refinada:  HP +25  ATK +15')
+            print('Arma >> Manopla do Infinito:  HP +25  ATK +15')
             self.bpoints += 1000
             self.health_max += 25
             self.health = self.health_max
@@ -559,58 +515,46 @@ class Player(Character):
         else:
             print('%s encontra um Bau Magico!' % self.name)
             self.health = self.health_max
-            if randint(0, 1):
-                if randint(0, 1):
-                    if randint(0, 1):
-                        pass
-            if randint(0, 1):
-                if randint(0, 1):
-                    if randint(0, 1):
-                        print('Lendario!!!')
-                        self.tesouro += 1
-                        self.bpoints += 100
-                        self.health_max += 3
-                        self.health = self.health_max
-                        self.arma += 3
-                    if randint(0, 1):
-                        if randint(0, 1):
-                            if randint(0, 1):
-                                print('Epico!!')
-                                self.tesouro += 1
-                                self.bpoints += 50
-                                self.arma += 2
-                            print('Raro!')
-                            self.tesouro += 1
-                            self.bpoints += 10
-                            self.arma += 1
-                if self.bpoints >= 5000:
-                    self.newtitulo = '$$)>>INFINITY<<($$'
+            if randint(0, 1) and randint(0, 1) and randint(0, 1) and randint(0, 1) and randint(0, 1) and randint(0, 1):
+                print('Lendario!!!')
+                self.tesouro += 1
+                self.bpoints += 100
+                self.health_max += 3
+                self.health = self.health_max
+                self.arma += 3
+            elif randint(0, 1) and randint(0, 1) and randint(0, 1):
+                print('Epico!!')
+                self.tesouro += 1
+                self.bpoints += 50
+                self.arma += 2
+            else:
+                print('Raro!')
+                self.tesouro += 1
+                self.bpoints += 10
+                self.arma += 1
+            if self.bpoints >= 5000:
+                self.newtitulo = '$$)>>INFINITY<<($$'
+                self.title()
+            if self.bpoints >= 800:
+                self.newtitulo = '<$$FORTUNEHACK$$>'
+                self.title()
+            else:
+                if self.bpoints >= 300:
+                    self.newtitulo = ':$ LORD  LUCKY $:'
                     self.title()
-                if self.bpoints >= 800:
-                    self.newtitulo = '<$$FORTUNEHACK$$>'
-                    self.title()
-                else:
-                    if self.bpoints >= 300:
-                        self.newtitulo = ':$ LORD  LUCKY $:'
-                        self.title()
 
     def enemy_attacks(self):
-        if self.skill == 3:
-            pass
-        if randint(0, 1):
-            if randint(0, 1):
-                if self.enemy.do_damage(self, skill=self.skill):
-                    print('%s foi abatido por %s!!!\nGAME OVER' % (self.name, self.enemy.name))
-                    self.health = 0
-                    self.state = 'normal'
-                if self.enemy.do_damage(self):
-                    print('%s foi abatido por %s!!!\nGAME OVER' % (self.name, self.enemy.name))
-                    self.health = 0
-                    self.state = 'normal'
+        if self.skill == 3 and randint(0, 1) and randint(0, 1) and self.enemy.do_damage(self, skill=self.skill):
+            print('%s foi abatido por %s!!!\nGAME OVER' % (self.name, self.enemy.name))
+            self.health = 0
+            self.state = 'normal'
+        elif self.enemy.do_damage(self):
+            print('%s foi abatido por %s!!!\nGAME OVER' % (self.name, self.enemy.name))
+            self.health = 0
+            self.state = 'normal'
 
 
 class Game:
-
     def __init__(self):
         self.vers = '9.0.5'
         print('\n')
@@ -676,10 +620,9 @@ class Game:
             skname = str(self.rs4.Fields.Item('SkName').Value)
             if len(skname) < 9:
                 skname += '    '
-            else:
-                if len(skname) < 10:
-                    skname += ' '
-            print('> ' + str(self.rs4.Fields.Item('ID').Value) + ' - ' + skname + '    ' + str(self.rs4.Fields.Item('Cost').Value) + '   ou   ' + str(int(self.rs4.Fields.Item('Cost').Value) * 15) + '\t- ' + str(self.rs4.Fields.Item('Desc').Value))
+            elif len(skname) < 10:
+                skname += ' '
+            print(f"> {str(self.rs4.Fields.Item('ID').Value)} - {skname}    {str(self.rs4.Fields.Item('Cost').Value)}   ou   {str(int(self.rs4.Fields.Item('Cost').Value) * 15)}\t- {str(self.rs4.Fields.Item('Desc').Value)}")
             self.rs4.MoveNext()
 
         print('=============================================================================================')
@@ -763,7 +706,8 @@ class Game:
                 self.rs.Filter = criterio
                 if self.rs.EOF is False:
                     print('Nome ja cadastrado')
-                    self.senha = getpass.getpass('Digite a senha: ')
+                    # self.senha = getpass.getpass('Digite a senha: ')
+                    self.senha = input('Digite a senha: ')
                     self.rs.MoveFirst()
                     while self.rs.EOF is False:
                         if self.senha == self.rs.Fields.Item('Senha').Value:
@@ -772,13 +716,14 @@ class Game:
                             self.p.experience_max = int(str(self.rs.Fields.Item('Nv').Value)) * 3
                             self.p.health = int(str(self.rs.Fields.Item('Hp').Value))
                             if self.p.health == 0:
-                                if self.p.nv >= 75:
-                                    self.p.health = 30
+                                if self.p.nv >= 100:
+                                    self.p.health = 50
+                                elif self.p.nv >= 75:
+                                    self.p.health = 35
+                                elif self.p.nv >= 50:
+                                    self.p.health = 20
                                 else:
-                                    if self.p.nv >= 50:
-                                        self.p.health = 20
-                                    else:
-                                        self.p.health = 10
+                                    self.p.health = 10
                             self.p.health_max = int(str(self.rs.Fields.Item('HpMax').Value))
                             self.p.arma = int(str(self.rs.Fields.Item('Arma').Value))
                             self.p.tesouro = int(str(self.rs.Fields.Item('Bau').Value))
@@ -801,46 +746,44 @@ class Game:
 
                     if correto is False:
                         print('Senha incorreta, digite novamente!')
-                    else:
-                        print('Novo Personagem!')
-                        self.senha = getpass.getpass('Digite a senha: ')
-                        Commands['0'](self.p)
-                        correto = True
+                else:
+                    print('Novo Personagem!')
+                    self.senha = input('Digite a senha: ')
+                    # self.senha = getpass.getpass('Digite a senha: ')
+                    Commands['0'](self.p)
+                    correto = True
 
             if randint(0, 1):
                 print("(Dica: 'h' mostra a lista de comandos)\n")
+            elif randint(0, 1):
+                print('(Dica: Pote de HP cura 4~8 de vida e e consumido apenas em batalhas)\n')
+            elif randint(0, 1):
+                print('(Dica: Special so sera liberado no Nv5)\n')
             else:
-                if randint(0, 1):
-                    print('(Dica: Pote de HP cura 4~8 de vida e e consumido apenas em batalhas)\n')
-                else:
-                    if randint(0, 1):
-                        print('(Dica: Special so sera liberado no Nv5)\n')
-                    else:
-                        print('(Dica: Special so pode usar 4 vezes por Nv)\n')
+                print('(Dica: Special so pode usar 4 vezes por Nv)\n')
             print('%s entrou em League of Tech Masters.' % self.p.name)
             print('Que comece a aventura...')
             line = ''
-            while self.p.health > 0:
-                if line != 'q':
-                    line = input('> ')
-                    if len(line) > 0:
-                        commandFound = False
-                        for c in Commands.keys():
-                            if line == '.':
-                                self.rank()
-                                commandFound = True
-                                break
-                            if line == 'b':
-                                self.shop()
-                                commandFound = True
-                                break
-                            if line == c:
-                                Commands[c](self.p)
-                                commandFound = True
-                                break
+            while self.p.health > 0 and line != 'q':
+                line = input('> ')
+                if len(line) > 0:
+                    commandFound = False
+                    for c in Commands.keys():
+                        if line == '.':
+                            self.rank()
+                            commandFound = True
+                            break
+                        elif line == 'b':
+                            self.shop()
+                            commandFound = True
+                            break
+                        elif line == c:
+                            Commands[c](self.p)
+                            commandFound = True
+                            break
 
-                        if not commandFound:
-                            print('%s nao pode fazer isso agora.' % self.p.name)
+                    if not commandFound:
+                        print('%s nao pode fazer isso agora.' % self.p.name)
 
             x = input('\nGostaria de Salvar seu progresso? (s/n): ')
             if x == 's':
